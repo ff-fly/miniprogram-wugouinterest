@@ -1,13 +1,49 @@
 {
     "pages": [
-        "pages/index/index"
+        "pages/li/index",
+        "pages/feilv/index",
+        "pages/house/index",
+        "pages/tesla/index"
     ],
+    "tabBar": {
+      "color": "@tabBarColor",
+      "selectedColor": "@tabBarSelectedColor",
+      "borderStyle": "@tabBarBorderStyle",
+      "backgroundColor": "@tabBarBackgroundColor",
+      "list": [
+        {
+          "pagePath": "page/li/index",
+          "iconPath": "@iconPathComponent",
+          "selectedIconPath": "@selectedIconPathComponent",
+          "text": "厘"
+        },
+        {
+          "pagePath": "page/feilv/index",
+          "iconPath": "@iconPathComponent",
+          "selectedIconPath": "@selectedIconPathComponent",
+          "text": "费率"
+        },
+        {
+          "pagePath": "page/house/index",
+          "iconPath": "@iconPathComponent",
+          "selectedIconPath": "@selectedIconPathComponent",
+          "text": "房贷"
+        },
+        {
+          "pagePath": "page/tesla/index",
+          "iconPath": "@iconPathComponent",
+          "selectedIconPath": "@selectedIconPathComponent",
+          "text": "特斯拉"
+        }
+      ]
+    },
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Weixin",
+        "navigationBarTitleText": "五狗利息",
         "navigationBarTextStyle": "black"
     },
     "style": "v2",
+    "themeLocation": "interest.theme.json",
     "sitemapLocation": "sitemap.json"
 }
