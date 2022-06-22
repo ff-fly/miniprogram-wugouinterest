@@ -12,25 +12,25 @@
       "backgroundColor": "@tabBarBackgroundColor",
       "list": [
         {
-          "pagePath": "page/li/index",
+          "pagePath": "pages/li/index",
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
           "text": "厘"
         },
         {
-          "pagePath": "page/feilv/index",
+          "pagePath": "pages/feilv/index",
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
           "text": "费率"
         },
         {
-          "pagePath": "page/house/index",
+          "pagePath": "pages/house/index",
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
           "text": "房贷"
         },
         {
-          "pagePath": "page/tesla/index",
+          "pagePath": "pages/tesla/index",
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
           "text": "特斯拉"
