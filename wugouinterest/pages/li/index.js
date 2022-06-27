@@ -5,23 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: ['月息', '日息', '年息'],
-    objectArray: [
-      {
-        id: 0,
-        name: '月息'
-      },
-      {
-        id: 1,
-        name: '日息'
-      },
-      {
-        id: 2,
-        name: '年息'
-      }
+    items: [
+      {value: 'M', name: '月息', checked: 'true'},
+      {value: 'Y', name: '年息'},
+      {value: 'D', name: '日息'}
     ],
-    index: 0,
     desc: "厘，中国大陆地区曾经使用的一个利率单位，根据所述为年利率、月利率或日利率，每厘分别为百分之一、千分之一或万分之一。每厘为十毫，十厘为一分。\n举例:\n年息四厘，即年利率为4%，本金1000元，每年利息为40元。\n月息三厘五毫，即月利率为3.5‰，本金1000元，每月利息为3.5元。\n日息一分二厘，即日利率为12‱，本金1000元，每日利息为1.2元。"
+  },
+
+  radioChange(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+
+    const items = this.data.items
+    for (let i = 0, len = items.length; i < len; ++i) {
+      items[i].checked = items[i].value === e.detail.value
+    }
+
+    this.setData({
+      items
+    })
   },
 
   /**
