@@ -11,12 +11,12 @@
       </label>
     </radio-group>
   </view>
-  <view class="weui-cell weui-cell_input">
-    <input class="weui-input" focus placeholder="输入利息厘" />
+  <view class="mycontainerrow">
+    <view class="weui-cell weui-cell_input">
+      <input class="weui-input" focus placeholder="输入利息厘" />
+    </view>
+    <text class="normal-text">=5%年利率</text>
   </view>
-  <text>年利率5%</text>
   <button type="primary">计算</button>
-  <view class="weui-cells weui-cells_form">
-    <text>{{desc}}</text>
-  </view>
+  <text class="page-body-text">{{desc}}</text>
 </view>
