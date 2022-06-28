@@ -5,7 +5,7 @@
     <radio-group bindchange="radioChange">
       <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
         <view class="weui-cell__hd">
-          <radio value="{{item.value}}" checked="true" />
+          <radio value="{{item.value}}" />
         </view>
         <view class="weui-cell__bd">{{item.name}}</view>
       </label>
@@ -13,10 +13,10 @@
   </view>
   <view class="mycontainerrow">
     <view class="weui-cell weui-cell_input">
-      <input class="weui-input" focus placeholder="输入利息厘" />
+      <input class="weui-input" bindinput="bindLiInput" type="number"  placeholder="输入利息厘" />
     </view>
-    <text class="normal-text">=5%年利率</text>
+    <text class="normal-text">={{outputRes}}%年利率</text>
   </view>
-  <button type="primary">计算</button>
+  <button type="primary" bindtap="calResult">计算</button>
   <text class="page-body-text">{{desc}}</text>
 </view>
