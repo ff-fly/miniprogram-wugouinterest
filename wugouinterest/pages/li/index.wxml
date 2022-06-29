@@ -1,7 +1,7 @@
 <!--pages/li/index.wxml-->
 <view class="mycontainer page" data-weui-theme="{{theme}}">
   <view class="page-section page-section-gap">
-    <view class="page-section-title">计算类型</view>
+    <view class="mypage-section-title">计算类型</view>
     <radio-group bindchange="radioChange">
       <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
         <view class="weui-cell__hd">
@@ -18,5 +18,5 @@
     <text class="normal-text">={{outputRes}}%年利率</text>
   </view>
   <button type="primary" bindtap="calResult">计算</button>
-  <text class="page-body-text">{{desc}}</text>
+  <text class="mypage-body-text">{{desc}}</text>
 </view>
