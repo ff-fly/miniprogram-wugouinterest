@@ -6,7 +6,8 @@ Page({
    */
   data: {
     inputLi: '',
-    outputRes: '',
+    outputRes: 0,
+    hintStr: '月',
     selectedValue: 'month',
     items: [
       {value: 'month', name: '月息', checked: 'true'},
@@ -20,29 +21,47 @@ Page({
     console.log('radio发生change事件，携带value值为：', e.detail.value)
 
     const items = this.data.items
+    var showHintStr
     for (let i = 0, len = items.length; i < len; ++i) {
       items[i].checked = items[i].value === e.detail.value
       if(items[i].checked == true) {
         this.setData({
           selectedValue : items[i].value
         })
+        if (items[i].value == "month") {
+          showHintStr = '月'
+        } else if (items[i].value == "year") {
+          showHintStr = '年'
+        } else if (items[i].value == "day") {
+          showHintStr = '日'
+        }
       }
     }
 
     this.setData({
-      items
+      items,
+      hintStr : showHintStr
     })
   },
 
   calResult(e) {
-    console.log('点击计算按钮:' + this.data.inputLi)
+    var inputValue = this.data.inputLi
+    const numberRegex = /^\d+(.\d+)?$/
+    if (!(numberRegex.test(inputValue))) {
+      wx.showToast({
+        title: '请输入有效值',
+      })
+      return
+    }
+
+    var selectedType = this.data.selectedValue
     var result = 0
-    if(this.data.selectedValue == 'month' ) 
-      result = 1
-    else if(this.data.selectedValue == 'year')
-      result = 2
-    else if(this.data.selectedValue == 'day')
-      result = 3
+    if(selectedType == 'month' ) 
+      result = inputValue * 1.2
+    else if(selectedType == 'year')
+      result = inputValue
+    else if(selectedType == 'day')
+      result = inputValue * 3.65
     this.setData({
       outputRes: result
     })
@@ -59,12 +78,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const items = this.data.items
-    for (let i = 0, len = items.length; i < len; ++i) {
-      items[i].value === "month"
-      items[i].checked = true
-      break
-    }
+    
   },
 
   /**
