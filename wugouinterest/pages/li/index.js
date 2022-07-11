@@ -50,6 +50,7 @@ Page({
     if (!(numberRegex.test(inputValue))) {
       wx.showToast({
         title: '请输入有效值',
+        icon: 'error'
       })
       return
     }
