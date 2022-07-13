@@ -140,6 +140,13 @@ input {
   color: var(--weui-FG-0);
 }
 
+.normal-text-left_20px {
+  margin-left: 20px;
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--weui-FG-0);
+}
+
 .page-foot{
   /* margin: 50px 0 0 0; */
   margin: 50px 0 0 0;

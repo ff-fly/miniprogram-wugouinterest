@@ -2,8 +2,7 @@
     "pages": [
         "pages/li/index",
         "pages/feilv/index",
-        "pages/house/index",
-        "pages/tesla/index"
+        "pages/house/index"
     ],
     "tabBar": {
       "color": "@tabBarColor",
@@ -28,12 +27,6 @@
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
           "text": "房贷"
-        },
-        {
-          "pagePath": "pages/tesla/index",
-          "iconPath": "@iconPathComponent",
-          "selectedIconPath": "@selectedIconPathComponent",
-          "text": "特斯拉"
         }
       ]
     },

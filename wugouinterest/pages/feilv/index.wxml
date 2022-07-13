@@ -9,6 +9,13 @@
       <text class="normal-text">%年化费率</text>
     </view>
 
+    <view class="mycontainerrow">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" bindinput="bindQishuInput" type="number" placeholder="输入贷款期数" />
+      </view>
+      <text class="normal-text">贷款期数(月)</text>
+    </view>
+
     <view class="mypage-section-title">年化利率计算方式</view>
     <radio-group bindchange="radioChange">
       <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
@@ -18,8 +25,8 @@
         <view class="weui-cell__bd">{{item.name}}</view>
       </label>
     </radio-group>
-    <view class="normal-text">{{finalResult}}%年化利率</view>
-    <button type="primary" bindtap="calResult">计算</button>
-    <view class="mypage-section-title">还款明细</view>
   </view>
+  <view class="normal-text-left_20px">{{finalResult}}%年化利率</view>
+  <button type="primary" bindtap="calResult">计算</button>
+  <text class="mypage-body-text">{{desc}}</text>
 </view>

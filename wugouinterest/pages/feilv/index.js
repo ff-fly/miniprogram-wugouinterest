@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputFl: '',
+    inputFl: 0,
+    inputQs: 1,
     finalResult: 0,
     selectedValue: 'benxi',
     items: [{
@@ -17,7 +18,8 @@ Page({
         value: 'benjin',
         name: '等额本金'
       }
-    ]
+    ],
+    desc: "费率，最终利息总和除以本金得到的值，总费率除以借款年数即为年化费率，总费率除以借款月数即为月费率，一般来说费率比利率要高，借款时务必弄清楚费率和利率的概念，可别被割韭菜了。"
   },
 
   radioChange(e) {
@@ -41,12 +43,28 @@ Page({
     console.log('input feilv:' + this.data.inputFl)
   },
 
+  bindQishuInput(e){
+    this.setData({
+      inputQs: e.detail.value
+    })
+    console.log('input qishu:' + this.data.inputQs)
+  },
+
   calResult(e) {
-    var inputValue = this.data.inputFl
+    var inputFeilv = this.data.inputFl
+    var inputQishu = this.data.inputQs
     const numberRegex = /^\d+(.\d+)?$/
-    if (!(numberRegex.test(inputValue))) {
+    if (!(numberRegex.test(inputFeilv))) {
       wx.showToast({
-        title: '请输入有效值',
+        title: '请输入有效费率',
+        icon: 'error'
+      })
+      return
+    }
+    const zhengshuRegex = /^[1-9]\d*$/
+    if (!(zhengshuRegex.test(inputQishu)) || inputQishu <= 0) {
+      wx.showToast({
+        title: '请输入有效期数',
         icon: 'error'
       })
       return
@@ -60,14 +78,24 @@ Page({
       result = this.calBenjin()
 
     console.log('calResult=', result)
+    this.setData ({
+      finalResult: result
+    })
   },
 
   calBenxi: function() {
+    var inputValue = this.data.inputFl
     return 10
   },
 
   calBenjin: function() {
-    return 20
+    var yearFl = parseInt(this.data.inputFl)
+    var monthQishu = parseInt(this.data.inputQs)
+    var a = yearFl / 12 * monthQishu * 24
+    var b = monthQishu + 1
+    var ret = (a / b).toFixed(2)
+    console.log('calBenjin=', ret)
+    return ret
   },
 
   /**
