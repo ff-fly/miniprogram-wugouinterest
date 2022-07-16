@@ -43,7 +43,7 @@ Page({
     console.log('input feilv:' + this.data.inputFl)
   },
 
-  bindQishuInput(e){
+  bindQishuInput(e) {
     this.setData({
       inputQs: e.detail.value
     })
@@ -78,17 +78,71 @@ Page({
       result = this.calBenjin()
 
     console.log('calResult=', result)
-    this.setData ({
+    this.setData({
       finalResult: result
     })
   },
 
-  calBenxi: function() {
-    var inputValue = this.data.inputFl
-    return 10
+  calBenxi: function () {
+    var monthFl = parseInt(this.data.inputFl) / 12 / 100
+    var monthQishu = parseInt(this.data.inputQs)
+    var c = (1 + monthFl * monthQishu) / monthQishu
+
+    var mLvLeft = monthFl
+    var mLvRight = monthFl
+
+    while (true) {
+      var b = Math.pow((mLvLeft + 1), monthQishu)
+      var fx = (mLvLeft * b) / (b - 1) - c
+      if (fx > 0) {
+        mLvLeft = mLvLeft / 2
+      } else if (fx == 0) {
+        console.log('calBenxi last result is mLvLeft=', mLvLeft)
+        return (mLvLeft * 12 * 100).toFixed(2)
+      } else {
+        console.log('calBenxi get mLvLeft=', mLvLeft)
+        break
+      }
+    }
+
+    while (true) {
+      var b = Math.pow((mLvRight + 1), monthQishu)
+      var fx = (mLvRight * b) / (b - 1) - c
+      if (fx < 0) {
+        mLvRight = mLvRight * 2
+      } else if (fx == 0) {
+        console.log('calBenxi last result is mLvRight=', mLvRight)
+        return (mLvRight * 12 * 100).toFixed(2)
+      } else {
+        console.log('calBenxi get mLvRight=', mLvLeft)
+        break
+      }
+    }
+
+    var compareUnit = 0.000001
+    var loopCount = 0
+    while (true) {
+      var mLvMid = (mLvLeft + mLvRight) / 2
+      var b = Math.pow((mLvMid + 1), monthQishu)
+      var fx = (mLvMid * b) / (b - 1) - c
+      loopCount = loopCount + 1
+      if (fx < 0) {
+        mLvLeft = mLvMid
+      } else if (fx == 0) {
+        console.log('calBenxi last result is 1 mLvMid=', mLvMid, loopCount)
+        return (mLvMid * 12 * 100).toFixed(2)
+      } else {
+        mLvRight = mLvMid
+      }
+
+      if (Math.abs(fx) <= compareUnit) {
+        console.log('calBenxi last result is 2 mLvMid=', mLvMid, loopCount)
+        return (mLvMid * 12 * 100).toFixed(2)
+      }
+    }
   },
 
-  calBenjin: function() {
+  calBenjin: function () {
     var yearFl = parseInt(this.data.inputFl)
     var monthQishu = parseInt(this.data.inputQs)
     var a = yearFl / 12 * monthQishu * 24

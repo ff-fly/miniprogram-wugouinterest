@@ -1,8 +1,7 @@
 {
     "pages": [
-        "pages/li/index",
         "pages/feilv/index",
-        "pages/house/index"
+        "pages/li/index"
     ],
     "tabBar": {
       "color": "@tabBarColor",
@@ -11,22 +10,16 @@
       "backgroundColor": "@tabBarBackgroundColor",
       "list": [
         {
-          "pagePath": "pages/li/index",
-          "iconPath": "@iconPathComponent",
-          "selectedIconPath": "@selectedIconPathComponent",
-          "text": "厘"
-        },
-        {
           "pagePath": "pages/feilv/index",
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
           "text": "费率"
         },
         {
-          "pagePath": "pages/house/index",
+          "pagePath": "pages/li/index",
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
-          "text": "房贷"
+          "text": "厘"
         }
       ]
     },
