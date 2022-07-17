@@ -6,7 +6,7 @@ Page({
    */
   data: {
     inputFl: 0,
-    inputQs: 1,
+    inputQs: 0,
     finalResult: 0,
     selectedValue: 'benxi',
     items: [{
@@ -53,8 +53,11 @@ Page({
   calResult(e) {
     var inputFeilv = this.data.inputFl
     var inputQishu = this.data.inputQs
-    const numberRegex = /^\d+(.\d+)?$/
-    if (!(numberRegex.test(inputFeilv))) {
+    //正浮点数
+    const floatRegex = /^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$/
+    //非负整数
+    const numberRegex = /^\d+$/
+    if (!(numberRegex.test(inputFeilv)) && !(floatRegex.test(inputFeilv))) {
       wx.showToast({
         title: '请输入有效费率',
         icon: 'error'
@@ -70,12 +73,18 @@ Page({
       return
     }
 
+    console.log('calResult, inputFeilv, inputQishu ', inputFeilv, inputQishu)
+
     var selectedType = this.data.selectedValue
     var result = 0
-    if (selectedType == 'benxi')
-      result = this.calBenxi()
-    else if (selectedType == 'benjin')
-      result = this.calBenjin()
+    if (inputFeilv <= 0) {
+      result = 0
+    } else {
+      if (selectedType == 'benxi')
+        result = this.calBenxi()
+      else if (selectedType == 'benjin')
+        result = this.calBenjin()
+    }
 
     console.log('calResult=', result)
     this.setData({
@@ -84,7 +93,7 @@ Page({
   },
 
   calBenxi: function () {
-    var monthFl = parseInt(this.data.inputFl) / 12 / 100
+    var monthFl = parseFloat(this.data.inputFl) / 12 / 100
     var monthQishu = parseInt(this.data.inputQs)
     var c = (1 + monthFl * monthQishu) / monthQishu
 
@@ -183,9 +192,7 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
