@@ -1,7 +1,8 @@
 {
     "pages": [
         "pages/feilv/index",
-        "pages/li/index"
+        "pages/li/index",
+        "pages/concret/index"
     ],
     "tabBar": {
       "color": "@tabBarColor",
@@ -20,6 +21,12 @@
           "iconPath": "@iconPathComponent",
           "selectedIconPath": "@selectedIconPathComponent",
           "text": "厘"
+        },
+        {
+          "pagePath": "pages/concret/index",
+          "iconPath": "@iconPathComponent",
+          "selectedIconPath": "@selectedIconPathComponent",
+          "text": "还款明细"
         }
       ]
     },
