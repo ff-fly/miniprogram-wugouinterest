@@ -4,13 +4,13 @@
     <view class="mypage-section-title">年化费率</view>
     <view class="mycontainerrow">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" bindinput="bindFeilvInput" type="number" placeholder="输入年化费率" />
+        <input class="weui-input" bindinput="bindFeilvInput" type="number" placeholder="输入年利率" value="{{inputLl}}" />
       </view>
-      <text class="normal-text">%年化费率</text>
+      <text class="normal-text">%年利率</text>
     </view>
     <view class="mycontainerrow">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" bindinput="bindQishuInput" type="number" placeholder="输入贷款期数" />
+        <input class="weui-input" bindinput="bindQishuInput" type="number" placeholder="输入贷款期数" value="{{inputQs}}" />
       </view>
       <text class="normal-text">贷款期数(月)</text>
     </view>
@@ -24,6 +24,18 @@
         <view class="weui-cell__bd">{{item.name}}</view>
       </label>
     </radio-group>
+    <button type="primary" bindtap="calResult">计算</button>
     <view class="mypage-section-title">还款明细</view>
+
+    <recycle-view batch="{{batchSetRecycleData}}" id="recycleId">
+      <view slot="before">长列表前面的内容</view>
+      <recycle-item wx:for="{{dataList}}" wx:key="id">
+        <view>
+          <image style='width:80px;height:80px;float:left;' src="{{item.image_url}}"></image>
+          {{item.idx+1}}. {{item.title}}
+        </view>
+      </recycle-item>
+      <view slot="after">长列表后面的内容</view>
+    </recycle-view>
   </view>
 </view>

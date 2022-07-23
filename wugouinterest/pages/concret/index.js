@@ -5,18 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataList:[],
-    type:'',
+    dataList: [],
     items: [{
-      value: 'benxi',
-      name: '等额本息',
-      checked: 'true'
-    },
-    {
-      value: 'benjin',
-      name: '等额本金'
-    }
-  ],
+        value: 'benxi',
+        name: '等额本息',
+        checked: 'true'
+      },
+      {
+        value: 'benjin',
+        name: '等额本金'
+      }
+    ],
+    inputLl: '',
+    inputQs: ''
   },
 
   /**
