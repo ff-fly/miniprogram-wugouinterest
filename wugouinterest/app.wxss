@@ -300,3 +300,18 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.myitem{
+  display: flex;
+  width: 750rpx;
+  height: 50rpx;
+}
+
+.concreterow {
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 16px;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
